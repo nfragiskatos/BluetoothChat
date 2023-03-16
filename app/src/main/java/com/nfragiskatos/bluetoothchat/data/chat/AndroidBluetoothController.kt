@@ -2,6 +2,7 @@ package com.nfragiskatos.bluetoothchat.data.chat
 
 import android.bluetooth.BluetoothManager
 import android.content.Context
+import android.content.pm.PackageManager
 import com.nfragiskatos.bluetoothchat.domain.chat.BluetoothController
 import com.nfragiskatos.bluetoothchat.domain.chat.BluetoothDeviceDomain
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,4 +39,7 @@ class AndroidBluetoothController(private val context: Context) : BluetoothContro
     override fun release() {
         TODO("Not yet implemented")
     }
+
+    private fun hasPermission(permission: String): Boolean =
+        context.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
 }
